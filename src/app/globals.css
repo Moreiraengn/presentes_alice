@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   IDENTIDADE VISUAL — "Oliveira"
+   Verde-oliva + areia + toque de terracota.
+   Títulos em Cormorant Garamond (serifada), textos em Jost (sem serifa).
+
+   ✏️ Para mudar as cores da lista e do painel, troque os valores abaixo
+   (veja a tabela "Trocar cores" no README deste módulo).
+   ───────────────────────────────────────────── */
+@theme {
+  /* fundos */
+  --color-paper: #fbf8f2; /* fundo principal (creme) */
+  --color-mist: #f3eee4; /* fundo alternativo de seções */
+  --color-cloud: #e7dfd1; /* bordas suaves, divisórias */
+  --color-sand: #ddd2bf; /* espaços de foto "em breve" */
+
+  /* verdes */
+  --color-line: #b7b496; /* linhas e ornamentos */
+  --color-sage-soft: #dfe2cf; /* verde bem claro (destaques suaves) */
+  --color-sage: #9aa57e; /* verde médio */
+  --color-primary: #5b6b40; /* cor principal (botões, títulos, faixas) */
+  --color-primary-deep: #4a5833; /* principal escurecida (hover) */
+  --color-primary-night: #2f3a20; /* principal bem escura */
+
+  /* destaque */
+  --color-accent: #b5654a; /* terracota: detalhes e o "&" */
+
+  /* textos */
+  --color-ink: #2e2a24;
+  --color-muted: #6b6257;
+  --color-faint: #a59c8f;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-jost), "Jost", system-ui, sans-serif;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-shimmer: shimmer 2.8s var(--ease-soft) infinite;
+  --animate-dot: dot 1.4s ease-in-out infinite;
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  @keyframes dot {
+    0%, 80%, 100% { opacity: 0.25; }
+    40% { opacity: 1; }
+  }
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-muted);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  background: var(--color-paper);
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-sage-soft);
+  color: var(--color-primary-night);
+}
+
+@layer components {
+  /* rótulo pequeno em caixa alta (menu, "PASSO 1 DE 2", "EM BREVE...") */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  /* títulos de seção: serifada grande, em itálico */
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+    color: var(--color-primary);
+  }
+
+  /* texto de apoio em caixa alta (endereços, legendas) */
+  .caps {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--color-muted);
+  }
+
+  .display {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  /* botões em formato de pílula */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.85rem 2.2rem;
+    min-width: 16rem;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: background-color 0.5s var(--ease-soft), color 0.5s var(--ease-soft), border-color 0.5s var(--ease-soft), transform 0.5s var(--ease-soft);
+    border: 1px solid currentColor;
+  }
+  @media (max-width: 480px) {
+    .btn {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+  .btn:active {
+    transform: scale(0.98);
+  }
+  .btn-ghost {
+    color: var(--color-primary);
+    border-color: color-mix(in srgb, var(--color-primary) 70%, transparent);
+  }
+  .btn-ghost:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-paper);
+  }
+  .btn-soft {
+    color: var(--color-accent);
+    border-color: color-mix(in srgb, var(--color-accent) 60%, transparent);
+  }
+  .btn-soft:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-paper);
+  }
+  .btn-solid {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-paper);
+  }
+  .btn-solid:hover {
+    background: var(--color-primary-deep);
+    border-color: var(--color-primary-deep);
+  }
+  .btn:disabled {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  /* campos de formulário: caixa arredondada clara */
+  .field {
+    width: 100%;
+    background: color-mix(in srgb, var(--color-paper) 70%, white);
+    border: 1px solid var(--color-cloud);
+    border-radius: 14px;
+    padding: 0.85rem 1.1rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-ink);
+    outline: none;
+    transition: border-color 0.4s var(--ease-soft), box-shadow 0.4s var(--ease-soft);
+  }
+  .field::placeholder {
+    color: var(--color-faint);
+  }
+  .field:focus {
+    border-color: var(--color-sage);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-sage-soft) 70%, transparent);
+  }
+
+  /* moldura em arco (topo arredondado, base reta) com contorno fino por dentro */
+  .arch-frame {
+    border-radius: 999px 999px 18px 18px;
+    border: 1px solid var(--color-line);
+    padding: 9px;
+  }
+  .arch-frame > * {
+    border-radius: 999px 999px 12px 12px;
+    border: 1px solid color-mix(in srgb, var(--color-line) 60%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

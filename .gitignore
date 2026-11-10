@@ -1,0 +1,18 @@
+# dependências e build
+/node_modules
+/.next/
+/out/
+/build
+*.tsbuildinfo
+next-env.d.ts
+
+# senhas e tokens (o .env.example é só o modelo e PODE ir para o GitHub)
+.env*
+!.env.example
+
+# banco local
+*.db
+*.db-journal
+
+.vercel
+.DS_Store
