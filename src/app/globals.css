@@ -10,8 +10,8 @@
    ───────────────────────────────────────────── */
 @theme {
   /* fundos */
-  --color-paper: #fbf8f2; /* fundo principal (creme) */
-  --color-mist: #f3eee4; /* fundo alternativo de seções */
+  --color-paper: #FFFFFF; /* fundo principal (creme) */
+  --color-mist: #FFFFFF; /* fundo alternativo de seções */
   --color-cloud: #e7dfd1; /* bordas suaves, divisórias */
   --color-sand: #ddd2bf; /* espaços de foto "em breve" */
 
@@ -19,9 +19,9 @@
   --color-line: #b7b496; /* linhas e ornamentos */
   --color-sage-soft: #dfe2cf; /* verde bem claro (destaques suaves) */
   --color-sage: #9aa57e; /* verde médio */
-  --color-primary: #5b6b40; /* cor principal (botões, títulos, faixas) */
-  --color-primary-deep: #4a5833; /* principal escurecida (hover) */
-  --color-primary-night: #2f3a20; /* principal bem escura */
+  --color-primary: #080D09; /* cor principal (botões, títulos, faixas) */
+  --color-primary-deep: #080D09; /* principal escurecida (hover) */
+  --color-primary-night: #080D09; /* principal bem escura */
 
   /* destaque */
   --color-accent: #b5654a; /* terracota: detalhes e o "&" */
